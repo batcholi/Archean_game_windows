@@ -34,15 +34,15 @@ tick
 
 
 
-	; ; Roles button
-	; if button(3,15,color(0,20,0),34,9)
-	; 	if $rolesTimer == 0
-	; 		$rolesTimer = 5
-	; 		roles()
-	; write(5,16,black,"ROLES")
+	; Roles button
+	if button(3,15,color(0,20,0),34,9) && (user == owner || owner == "")
+		if $rolesTimer == 0
+			$rolesTimer = 5
+			roles(user)
+	write(5,16,black,"ROLES")
 
-	; ; Roles animation
-	; if $rolesTimer > 0
-	; 	draw(3,14,color(0,200,0),34,9)
-	; 	$rolesTimer--
+	; Roles animation
+	if $rolesTimer > 0
+		draw(3,14,color(0,200,0),34,9)
+		$rolesTimer--
 

@@ -65,8 +65,11 @@ tick
 	set_text_size(2) ; sets text size to two times native, only valid for following writes in current tick until next set_text_size()
 
 	if button(0, 0, $gray, 100, 50) ; draw a 100x50 gray rectangle button in the top left corner of the screen
-		print("The button was clicked") ; prints a message to the console (when the button was clicked, in this case)
-
+		if user == owner
+			print("The owner of this computer clicked the button")
+		else
+			print("The button was clicked by " & user) ; prints a message to the console (when the button was clicked, in this case)
+	
 
 	; IO
 	
