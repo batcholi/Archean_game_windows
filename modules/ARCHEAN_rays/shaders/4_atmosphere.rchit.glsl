@@ -66,6 +66,9 @@ void main() {
 	float nextHitDistance = xenonRendererData.config.zFar;
 	if (recursions < RAY_MAX_RECURSION && !rayIsGi) {
 		RAY_RECURSION_PUSH
+			// Trace Plasma
+			traceRayEXT(tlas, gl_RayFlagsNoOpaqueEXT, RAYTRACE_MASK_PLASMA, 0/*rayType*/, 0/*nbRayTypes*/, 0/*missIndex*/, origin, t1, viewDir, t2, 0);
+			// Trace Opaque
 			traceRayEXT(tlas, gl_RayFlagsOpaqueEXT, RAYTRACE_MASK_TERRAIN|RAYTRACE_MASK_ENTITY|RAYTRACE_MASK_HYDROSPHERE|RAYTRACE_MASK_CLUTTER, 0/*rayType*/, 0/*nbRayTypes*/, 0/*missIndex*/, origin, t1, viewDir, t2, 0);
 			if (ray.hitDistance == -1 && !hitInnerRadius) {
 				traceRayEXT(tlas, gl_RayFlagsOpaqueEXT, RAYTRACE_MASK_TERRAIN|RAYTRACE_MASK_ENTITY|RAYTRACE_MASK_ATMOSPHERE|RAYTRACE_MASK_HYDROSPHERE|RAYTRACE_MASK_CLUTTER, 0/*rayType*/, 0/*nbRayTypes*/, 0/*missIndex*/, origin, t2 * 1.0001, viewDir, xenonRendererData.config.zFar, 0);
